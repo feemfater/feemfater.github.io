@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>我的自叙 | SunYu</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.ico"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.11.0"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="黑塞在《德米安》中说：‘人们彼此理解，但每个人最终却只能解释自己’，我该如何评价这三年中的“我”？我不知道。但我可以肯定，这三年里我的所见所闻所感是说书人难以述明的，它并不跌宕起伏，也非平白深刻，不拨开那描画的面纱，它仅仅只会是我的生活，并非戏剧，并非史诗，简单与充实是它唯二的美德，但也许正是如此，"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="SunYu"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.ico"><link rel="apple-touch-icon" href="/img/pwa/favicon.ico" sizes="180x180"><script>console.log(
+    "%c Program: Hexo %c Theme: Solitude %c Version: v1.11.0",
+    "border-radius:5px 0 0 5px;padding: 5px 10px;color:white;background:#ff3842;",
+    "padding: 5px 10px;color:white;background:#3e9f50;",
+    "padding: 5px 10px;color:white;background:#0084ff;border-radius:0 5px 5px 0",
+)
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+    
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+    
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+    
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+    
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+        
+                if (name && keyObj[name]) return
+        
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+        }
+    })()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2021-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.webp'
+    },
+    copyright: {"limit":50,"author":"作者: FeemFater","link":"链接: ","source":"来源: SunYu","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+        syntax: 'highlight.js'
+    },
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可"},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: [],
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false
+}</script><meta name="generator" content="Hexo 7.2.0"></head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="solitude  st-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><span class="title">Solitude</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">我的自叙</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="solitude  st-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude st-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://pic.imgdb.cn/item/6641ea1a0ea9cb1403fb7db6.png" alt="我的自叙"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E6%9D%82%E6%96%87/">杂文</a></span><div class="tag_share"><div class="post-meta__tag-list"></div></div></div></div><h1 class="post-title">我的自叙</h1><div id="post-meta"><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>黑塞在《德米安》中说：‘人们彼此理解，但每个人最终却只能解释自己’，我该如何评价这三年中的“我”？我不知道。但我可以肯定，这三年里我的所见所闻所感是说书人难以述明的，它并不跌宕起伏，也非平白深刻，不拨开那描画的面纱，它仅仅只会是我的生活，并非戏剧，并非史诗，简单与充实是它唯二的美德，但也许正是如此，我才能走向这条通往窄门的自我之路。诗人辛波斯卡在《企图》中吟道‘我即使爬上山丘，也无法如玫瑰般盛开，只有玫瑰能盛开如玫瑰，别的不能，那毋庸置疑。’而我并非玫瑰，为何要盛开如玫瑰？</p>
+<p><em>请注意，我现在要给诸位讲什么！</em></p>
+<p>​	三年来，印有我油腻指纹的书页几乎可以铺满整个车库；三年来，置身于人群之中，我惊异地发现独处是多么快活的一件事；三年来，我的足迹遍布整个世界，从湘水之畔到珠峰之巅，从揭示世界奥秘的苹果树到地月转移轨道，从孟德尔的实验田到转基因大豆的生产大棚，无不留下我好奇的脚印；三年来，我从不满足于眼前的四角天空，渴望着透过钻石孔眼看到更为广阔的世界。</p>
+<p>​	三年里，我像永动机，又像是陀螺，无止境地旋转，将零星破碎的知识一股脑地吸纳，挤压成小方块儿，我从不奢求有力量建造通天之塔，但我始终相信，这是一切伟大前程的开端，是某种事业坚定的基础，正如伊卡洛斯没有蜡翼便难以飞翔，西西弗斯不够狡诈便难得推石之罚。</p>
+<p>​	三年里，我曾萌生野心建造一座永生者的城市，在那里规则是唯一的美好，在那里马克瓦尔多将被拘禁在密不透风的水泥房，柯西莫将不被允许上树，皮埃罗将不会有登场的机会，皮格马利翁将忘记加拉泰亚，而我将会是规则的品鉴师，憎恶混乱，欣赏事物各司其职，井井有条的运转，这就是我遵循的规则。</p>
+<p>​	三年里，我蜷缩在试卷堆，我所目的并非失去灵魂僵硬呆板的知识，而是一群鲜活可感的小精灵儿，他们闯入我的梦境，我的过去，现在，未来，他们挤占空气的没一个间隙，占领红细胞空洞的心，悄然渗入我的肺，随存在的触角延伸扩散，它们无时无刻不在看着我，亦如老大哥无时无刻不在看着你，我想尖叫，想随着埃伦蒂拉越过热气蒸腾的盐碱沼泽地，越过开采滑石的矿坑，越过令人昏昏欲睡的水上小屋，一次都没有回头，一直跑到海洋的自然法则失效、沙漠开始的地方。但她仍然没有停下，她带着那件装满金条的坎肩，跑向那干燥的风的尽头，跑向比那永远不会落山的太阳更远的地方，但，我没有金坎肩。</p>
+<p>​	三年里我遭遇了友情的无端破灭，异性关系的莫名猜忌，自誉正端的无情嘲弄，理想与现实的巨大割裂，我曾试着一点点吸纳，将这锋利的刀片溶在血肉里，坚信着宽容与忍耐会在这无尽灰暗之中，为我带来生活的五彩，但往往蔓延而来的却是失望与迷惘，忍耐从不会是美德。我踌躇于当下，往往遗憾于旧日之失，乃至捶胸顿足懊悔于当时之所为，陷于无可慰藉的回忆泥潭，如果当初我能有所行动，或许一切都能改变。但这又有什么意义呢？‘人给自己的痛苦套上了时间。人因过去的缘由而痛苦，又把痛苦延伸到未来。这样便产生了绝望’我不愿如盖茨比追逐虚幻悲剧消亡，我踮起脚，渴望够到的从不是虚幻的泡影，而是实实在在可触摸的事物，而非克拉拉虚幻的太阳，马林鱼空洞的骨架；亦非撒满地面的便士，化作泡沫的人鱼。</p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.ico"></a><div class="post-copyright__author_name">SunYu</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">SunYu</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"></div></div><div class="social-share"></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/05/13/%E5%84%92%E5%AE%B6%E7%9C%9F%E4%BA%BA--%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%BA%B8%E5%BF%83%E8%A6%81%E3%80%8B%E6%9C%89%E6%84%9F/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">儒家真人--读《中庸心要》有感</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="/img/avatar.png"><div class="avatar-sticker"><img class="avatar-sticker-img" src="https://7.isyangs.cn/34/65f2e4e0423cc-34.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">分享自己对编程的<b>热爱</b>，对美好生活的<b>向往</b>，对知识海洋<b>探索历程</b>。</div><div class="author-info__description2">相信你可以在这里找到对你有用的知识和教程。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">FeemFater</div><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/%E6%88%91%E7%9A%84%E8%87%AA%E5%8F%99/" title="我的自叙"><img alt="我的自叙" src="https://pic.imgdb.cn/item/6641ea1a0ea9cb1403fb7db6.png"></a><div class="content"><a class="title" href="/2024/06/09/%E6%88%91%E7%9A%84%E8%87%AA%E5%8F%99/" title="我的自叙">我的自叙</a><a class="article-recent_post_categories" href="/2024/06/09/%E6%88%91%E7%9A%84%E8%87%AA%E5%8F%99/">杂文</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/13/%E5%84%92%E5%AE%B6%E7%9C%9F%E4%BA%BA--%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%BA%B8%E5%BF%83%E8%A6%81%E3%80%8B%E6%9C%89%E6%84%9F/" title="儒家真人--读《中庸心要》有感"><img alt="儒家真人--读《中庸心要》有感" src="https://p6-tt.byteimg.com/origin/pgc-image/db91ae5300cd4364a8bc7f50757848ba?from=pc"></a><div class="content"><a class="title" href="/2024/05/13/%E5%84%92%E5%AE%B6%E7%9C%9F%E4%BA%BA--%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%BA%B8%E5%BF%83%E8%A6%81%E3%80%8B%E6%9C%89%E6%84%9F/" title="儒家真人--读《中庸心要》有感">儒家真人--读《中庸心要》有感</a><a class="article-recent_post_categories" href="/2024/05/13/%E5%84%92%E5%AE%B6%E7%9C%9F%E4%BA%BA--%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%BA%B8%E5%BF%83%E8%A6%81%E3%80%8B%E6%9C%89%E6%84%9F/">杂项</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/13/%E8%99%9A%E5%B9%BB%E6%96%87%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%AE%87%E5%AE%99%E5%B9%BB%E6%83%B3/" title="虚幻文学中的宇宙幻想"><img alt="虚幻文学中的宇宙幻想" src="https://p3-tt.byteimg.com/origin/pgc-image/c462c39f8f1c44588511a4f756c22786?from=pc"></a><div class="content"><a class="title" href="/2024/05/13/%E8%99%9A%E5%B9%BB%E6%96%87%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%AE%87%E5%AE%99%E5%B9%BB%E6%83%B3/" title="虚幻文学中的宇宙幻想">虚幻文学中的宇宙幻想</a><a class="article-recent_post_categories" href="/2024/05/13/%E8%99%9A%E5%B9%BB%E6%96%87%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%AE%87%E5%AE%99%E5%B9%BB%E6%83%B3/">杂项</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/13/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/" title="非线性方程求解潦草版"><img alt="非线性方程求解潦草版" src="https://pic.imgdb.cn/item/6641ea1d0ea9cb1403fb812c.png"></a><div class="content"><a class="title" href="/2024/05/13/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/" title="非线性方程求解潦草版">非线性方程求解潦草版</a><a class="article-recent_post_categories" href="/2024/05/13/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/">编程</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/13/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析"><img alt="数值分析" src="https://pic.imgdb.cn/item/6641ea1a0ea9cb1403fb7db6.png"></a><div class="content"><a class="title" href="/2024/05/13/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" title="数值分析">数值分析</a><a class="article-recent_post_categories" href="/2024/05/13/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/">编程</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span>Solitude</span></div><div class="footer-bar-description">来自 SunYu 的文章</div><a class="footer-bar-link" href="/about/">了解更多</a></div><div id="footer_deal"></div><div id="st-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2021 - 2024 By&nbsp;<a class="footer-bar-link" href="/">FeemFater</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/valor-x/hexo-theme-solitude" alt="主题">主题</a><a class="footer-bar-link cc" href="/null" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=1.11.0"></script><script src="/js/main.js?v=1.11.0"></script><script src="/js/third_party/waterfall.min.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.11.0"></script><script>dark()
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><div class="js-pjax"></div></div><!-- newest comment--><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ['title','#body-wrap','#site-config','meta[name="description"]','.js-pjax','meta[property^="og:"]','#config-diff'],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    is_rm && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- google adsense--><!-- search--><!-- Tianli-Talk--><!-- music--></body></html><script>const posts=["2024/06/09/我的自叙/","2024/05/13/儒家真人--读《中庸心要》有感/","2024/05/13/虚幻文学中的宇宙幻想/","2024/05/13/非线性方程求解/","2024/05/13/数值分析/","2024/05/13/PHP/","2024/05/13/SQL/","2024/05/13/广义表的应用设计/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>
