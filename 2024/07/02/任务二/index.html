@@ -1,0 +1,493 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><title>中小型网吧网络设计方案 | SunYu</title><noscript>开启JavaScript才能访问本站哦~</noscript><link rel="icon" href="/img/pwa/favicon.ico"><!-- index.css--><link rel="stylesheet" href="/css/index.css?v=1.11.0"><!-- inject head--><link rel="stylesheet" href="https://cdn2.codesign.qq.com/icons/7pOrz0WXB5ZWJPX/latest/iconfont.css"><!-- aplayer--><!-- swiper--><!-- fancybox ui--><!-- katex--><!-- Open Graph--><meta name="description" content="任务一综合实验1.实验概述一台思科三层交换机划分3个vlan vlan 2： ip 192.168.1.1 255.255.255.0 192.168.1.254 vlan 3： ip 192.168.2.1 255.255.255.0 192.168.2.254 - vlan 4 ：ip"><!-- pwa--><meta name="apple-mobile-web-app-capable" content="SunYu"><meta name="theme-color" content="var(--efu-main)"><meta name="apple-mobile-web-app-status-bar-style" content="var(--efu-main)"><link rel="bookmark" href="/img/pwa/favicon.ico"><link rel="apple-touch-icon" href="/img/pwa/favicon.ico" sizes="180x180"><script>console.log(
+    "%c Program: Hexo %c Theme: Solitude %c Version: v1.11.0",
+    "border-radius:5px 0 0 5px;padding: 5px 10px;color:white;background:#ff3842;",
+    "padding: 5px 10px;color:white;background:#3e9f50;",
+    "padding: 5px 10px;color:white;background:#0084ff;border-radius:0 5px 5px 0",
+)
+</script><script>(()=>{
+        const saveToLocal = {
+            set: function setWithExpiry(key, value, ttl) {
+                if (ttl === 0)
+                    return
+                const now = new Date()
+                const expiryDay = ttl * 86400000
+                const item = {
+                    value: value,
+                    expiry: now.getTime() + expiryDay
+                }
+                localStorage.setItem(key, JSON.stringify(item))
+            },
+            get: function getWithExpiry(key) {
+                const itemStr = localStorage.getItem(key)
+    
+                if (!itemStr) {
+                    return undefined
+                }
+                const item = JSON.parse(itemStr)
+                const now = new Date()
+    
+                if (now.getTime() > item.expiry) {
+                    localStorage.removeItem(key)
+                    return undefined
+                }
+                return item.value
+            }
+        };
+        window.utils = {
+            saveToLocal: saveToLocal,
+            getCSS: (url, id = false) => new Promise((resolve, reject) => {
+              const link = document.createElement('link')
+              link.rel = 'stylesheet'
+              link.href = url
+              if (id) link.id = id
+              link.onerror = reject
+              link.onload = link.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                link.onload = link.onreadystatechange = null
+                resolve()
+              }
+              document.head.appendChild(link)
+            }),
+            getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+              const script = document.createElement('script')
+              script.src = url
+              script.async = true
+              script.onerror = reject
+              script.onload = script.onreadystatechange = function() {
+                const loadState = this.readyState
+                if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+                script.onload = script.onreadystatechange = null
+                resolve()
+              }
+    
+              Object.keys(attr).forEach(key => {
+                script.setAttribute(key, attr[key])
+              })
+    
+              document.head.appendChild(script)
+            }),
+            addGlobalFn: (key, fn, name = false, parent = window) => {
+                const globalFn = parent.globalFn || {}
+                const keyObj = globalFn[key] || {}
+        
+                if (name && keyObj[name]) return
+        
+                name = name || Object.keys(keyObj).length
+                keyObj[name] = fn
+                globalFn[key] = keyObj
+                parent.globalFn = globalFn
+            },
+        }
+    })()</script><!-- global head--><script>const GLOBAL_CONFIG = {
+    root: '/',
+    algolia: undefined,
+    localsearch: undefined,
+    runtime: '2021-04-20 00:00:00',
+    lazyload: {
+        enable: false,
+        error: '/img/error_load.webp'
+    },
+    copyright: {"limit":50,"author":"作者: FeemFater","link":"链接: ","source":"来源: SunYu","info":"著作权归作者所有。 商业转载请联系作者获得授权，非商业转载请注明出处。"},
+    highlight: {
+        enable: true,
+        limit: 200,
+        expand: true,
+        copy: true,
+        syntax: 'highlight.js'
+    },
+    randomlink: false,
+    lang: {"theme":{"dark":"已切换至深色模式","light":"已切换至浅色模式"},"copy":{"success":"复制成功","error":"复制失败"},"backtop":"返回顶部","time":{"day":"天前","hour":"小时前","just":"刚刚","min":"分钟前","month":"个月前"},"f12":"开发者模式已打开，请遵循GPL协议。","totalk":"无需删除空行，直接输入评论即可"},
+    aside: {
+        sayhello: {
+            morning: '一日之计在于晨',
+            noon: '吃饱了才有力气干活',
+            afternoon: '集中精力，攻克难关',
+            night: '不要太劳累了，早睡更健康',
+            goodnight: '睡个好觉，保证精力充沛',
+        },
+        sayhello2: [],
+    },
+    covercolor: {
+        enable: false
+    },
+    comment: false,
+    lightbox: 'null',
+    post_ai: false,
+    right_menu: false,
+};</script><!-- page-config head--><script id="config-diff">var PAGE_CONFIG = {
+    is_post: true,
+    is_page: false,
+    is_home: false,
+    page: '',
+    toc: true,
+    comment: false,
+    ai_text: false
+}</script><meta name="generator" content="Hexo 7.2.0"></head><body id="body"><!-- universe--><canvas id="universe"></canvas><!-- loading--><!-- console--><div id="console"><div class="close-btn" onclick="sco.hideConsole()"><i class="solitude st-close-fill"></i></div><div class="button-group"><div class="console-btn-item"><span class="darkmode_switchbutton" onclick="sco.switchDarkMode()" title="昼夜切换"><i class="solitude st-moon-clear-fill"></i></span></div><div class="console-btn-item" id="consoleHideAside"><span class="asideSwitch" onclick="sco.switchHideAside()" title="边栏显示控制"><i class="solitude st-side-bar-fill"></i></span></div></div><div class="console-mask" onclick="sco.hideConsole()"></div></div><!-- sidebar--><div id="sidebar" style="zoom: 1;"><div id="menu-mask" style="display: none;"></div><div id="sidebar-menus"><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a></div></div></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><span class="darkmode_switchbutton menu-child" onclick="sco.switchDarkMode()"><i class="solitude st-moon-clear-fill"></i><span>显示模式</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="solitude  st-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-widget card-tags card-archives card-webinfo card-allinfo"><div class="card-tag-cloud"></div></div></div></div><!-- keyboard--><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav class="show" id="nav"><div id="nav-group"><div id="blog_name"><a id="site-name" href="/" title="返回博客主页"><span class="title">Solitude</span></a></div><div id="page-name-mask"><div id="page-name"><a id="page-name-text" onclick="sco.toTop()">中小型网吧网络设计方案</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><span>首页</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>文库</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="solitude  st-folder-fill"></i><span>文章列表</span></a></li><li><a class="site-page child" href="/categories/"><i class="solitude  st-checkbox-multiple-blank-fill"></i><span>全部分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="solitude  st-price-tag-fill"></i><span>全部标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>我的</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="solitude  st-disc-fill"></i><span>音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span>关于</span></a><ul class="menus_item_child"><li><a class="site-page child" href="/about/"><i class="solitude  st-contacts-fill"></i><span>关于本站</span></a></li></ul></div></div></div><div id="nav-left"></div><div id="nav-right"><div class="nav-button" id="nav-totop" onclick="sco.toTop()"><a class="totopbtn"><i class="solitude st-arrow-up-line"></i><span id="percent">0</span></a></div><div id="toggle-menu"><a class="site-page"><i class="solitude st-menu-line"></i></a></div></div></div></nav><div class="coverdiv" id="coverdiv"><img class="nolazyload" id="post-cover" src="https://www.cthulhuclub.com/wp-content/uploads/2021/01/d252163da99c42d88d54f7b59bd0d362.jpeg" alt="中小型网吧网络设计方案"></div><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original" title="该文章为原创文章，注意版权协议">原创</a><span class="post-meta-categories"><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></span><div class="tag_share"><div class="post-meta__tag-list"></div></div></div></div><h1 class="post-title">中小型网吧网络设计方案</h1><div id="post-meta"><div class="meta-secondline"></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="任务一"><a href="#任务一" class="headerlink" title="任务一"></a>任务一</h1><h2 id="综合实验"><a href="#综合实验" class="headerlink" title="综合实验"></a>综合实验</h2><h3 id="1-实验概述"><a href="#1-实验概述" class="headerlink" title="1.实验概述"></a>1.实验概述</h3><p>一台思科三层交换机划分3个vlan </p>
+<ul>
+<li>vlan 2： ip 192.168.1.1 255.255.255.0 192.168.1.254 </li>
+<li>vlan 3： ip 192.168.2.1 255.255.255.0 192.168.2.254 - </li>
+<li>vlan 4 ：ip 192.168.3.1 255.255.255.0 192.168.3.254</li>
+</ul>
+<p>各vlan 之间能互相通迅. 现在增加1台cisco路由想实现共享，我们的PC0、PC1处在VLAN2中，PC2、PC3处在VLAN3中，Server0处在VLAN4中。现在要使我们内网能够正常访问我们的Server0服务器，然后同时还要能够访问我们的ISP外网的WWW服务器。</p>
+<h3 id="2-实验原理"><a href="#2-实验原理" class="headerlink" title="2.实验原理"></a>2.实验原理</h3><ul>
+<li><p><strong>VLAN（虚拟局域网）原理</strong>：</p>
+<p>VLAN是一种在交换机上创建不同虚拟网络的技术，它可以将一个物理网络分割成多个虚拟网络，每个VLAN都是独立的广播域，提高安全性和管理效率。</p>
+</li>
+<li><p><strong>IP地址分配原理</strong>：</p>
+<p>每个设备在网络上需要一个唯一的IP地址进行通信。在本实验中，使用静态IP地址分配给VLAN接口和服务器，同时使用DHCP（动态主机配置协议）为各VLAN内的主机自动分配IP地址。</p>
+</li>
+<li><p><strong>NAT（网络地址转换）原理</strong>：</p>
+<p>NAT是一种技术，允许一个整个网络用一个或少数几个IP地址与互联网通信。在本实验中，使用NAT允许内网设备访问外网资源。</p>
+</li>
+<li><p><strong>路由信息协议（RIP）原理</strong>：</p>
+<p>RIP是一种内部网关协议（IGP），用于在局域网或广域网中交换路由信息。在本实验中，RIP用于交换路由信息，确保不同VLAN和路由器之间的路由正确性。</p>
+</li>
+</ul>
+<h3 id="3-实验内容"><a href="#3-实验内容" class="headerlink" title="3.实验内容"></a>3.实验内容</h3><h4 id="3-1-网络拓扑"><a href="#3-1-网络拓扑" class="headerlink" title="3.1 网络拓扑"></a>3.1 网络拓扑</h4><p><img src="https://pic.imgdb.cn/item/66827552d9c307b7e9b1d036.png"></p>
+<h4 id="3-2-配置设备"><a href="#3-2-配置设备" class="headerlink" title="3.2  配置设备"></a>3.2  配置设备</h4><ul>
+<li><p>三层交换机配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">Switch#config t</span><br><span class="line">Switch(config)#vlan 2 创建VLAN2</span><br><span class="line">Switch(config-vlan)#exi</span><br><span class="line">Switch(config)#vlan 3 创建VLAN3</span><br><span class="line">Switch(config-vlan)#exi</span><br><span class="line">Switch(config)#vlan 4 创建VLAN4</span><br><span class="line">Switch(config-vlan)#exit</span><br><span class="line">Switch(config)#int fa0/1 将我们的fa0/1添加到VLAN2中</span><br><span class="line">Switch(config-if)#sw mo ac</span><br><span class="line">Switch(config-if)#sw ac vlan 2</span><br><span class="line">Switch(config-if)#exit</span><br><span class="line">Switch(config)#int fa0/2 将我们的FA0/2添加到VLAN3中</span><br><span class="line">Switch(config-if)#sw mo ac</span><br><span class="line">Switch(config-if)#sw ac vlan 3</span><br><span class="line">Switch(config-if)#exit</span><br><span class="line">Switch(config)#int fa0/3 将我们的FA0/3添加到VLAN4中</span><br><span class="line">Switch(config-if)#sw mo ac</span><br><span class="line">Switch(config-if)#sw ac vlan 4</span><br><span class="line">Switch(config-if)#exit</span><br><span class="line">Switch(config)#int vlan 2 给我们的VLAN2添加一个IP地址，用于不同网段之间互相访问</span><br><span class="line">Switch(config-if)#ip add 192.168.1.1 255.255.255.0</span><br><span class="line">Switch(config-if)#exit</span><br><span class="line">Switch(config)#int vlan 3 给我们的VLAN3添加一个IP地址 </span><br><span class="line">Switch(config-if)#ip add 192.168.2.1 255.255.255.0</span><br><span class="line">Switch(config-if)#exit</span><br><span class="line">Switch(config)#int vlan 4 给我们的VLAN4添加一个IP地址</span><br><span class="line">Switch(config-if)#ip add 192.168.3.1 255.255.255.0</span><br><span class="line">Switch(config-if)#no shut</span><br><span class="line">Switch(config-if)#exit</span><br><span class="line">以下几行是用来给我们不同的VLAN内的主机自动分配我们的IP地址。</span><br><span class="line">Switch(config)#ip dhcp pool VLAN2</span><br><span class="line">Switch(dhcp-config)#network 192.168.1.0 255.255.255.0</span><br><span class="line">Switch(dhcp-config)#default-router 192.168.1.1</span><br><span class="line">Switch(dhcp-config)#exit</span><br><span class="line">Switch(config)#ip dhcp pool VLAN3</span><br><span class="line">Switch(dhcp-config)#network 192.168.2.0 255.255.255.0</span><br><span class="line">Switch(dhcp-config)#default-router 192.168.2.1</span><br><span class="line">Switch(dhcp-config)#exit</span><br><span class="line">Switch(config)#</span><br><span class="line"></span><br><span class="line">Switch(config)#int fa0/24 </span><br><span class="line">Switch(config-if)#no switchport 关闭二层端口，这样就可以配置IP地址了 </span><br><span class="line">Switch(config-if)#ip add 192.168.5.1 255.255.255.0 它现在是一个三层端口，它可以配置IP地址</span><br><span class="line">Switch(config-if)#no shut</span><br><span class="line">Switch(config-if)#exit</span><br><span class="line">Switch(config)#ip routing 开启路由功能，如果不开启路由功能就不能使用路由协议</span><br><span class="line">Switch(config)#router rip 我们这里运行一个rip协议</span><br><span class="line">Switch(config-router)#ver 2</span><br><span class="line">Switch(config-router)#no au</span><br><span class="line">Switch(config-router)#net 192.168.1.0</span><br><span class="line">Switch(config-router)#net 192.168.2.0</span><br><span class="line">Switch(config-router)#net 192.168.3.0</span><br><span class="line">Switch(config-router)#net 192.168.5.0</span><br><span class="line">Switch(config-router)#exit</span><br><span class="line">Switch(config)#</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>路由器配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Router(config)#int fa0/0</span><br><span class="line">Router(config-if)#ip add 192.168.5.2 255.255.255.0</span><br><span class="line">Router(config-if)#no shut</span><br><span class="line">Router(config-if)#exit</span><br><span class="line">Router(config)#int s2/0</span><br><span class="line">Router(config-if)#ip add 202.1.1.1 255.255.255.0</span><br><span class="line">Router(config-if)#no shut</span><br><span class="line">Router(config-if)#clock rate 64000</span><br><span class="line">Router(config-if)#exit</span><br><span class="line">Router(config)#router rip</span><br><span class="line">Router(config-router)#ver 2</span><br><span class="line">Router(config-router)#no au</span><br><span class="line">Router(config-router)#net 192.168.5.0 fa0/0</span><br><span class="line">Router(config-router)#default-information originate 它的作用是给我们三层路由器分配一条默认路由出去！</span><br><span class="line">Router(config-router)#exit</span><br><span class="line">Router(config)#</span><br><span class="line">Router(config)#access-list 1 permit 192.168.1.0 0.0.0.255</span><br><span class="line">Router(config)#access-list 1 permit 192.168.2.0 0.0.0.255</span><br><span class="line">Router(config)#access-list 1 permit 192.168.3.0 0.0.0.255</span><br><span class="line">Router(config)#ip nat inside source list 1 interface s0/0 overload</span><br><span class="line">Router(config)#int s2/0</span><br><span class="line">Router(config-if)#ip nat outside</span><br><span class="line">Router(config-if)#exit</span><br><span class="line">Router(config)#int fa0/0</span><br><span class="line">Router(config-if)#ip nat inside</span><br><span class="line">Router(config-if)#end</span><br><span class="line">Router(config)#ip route 0.0.0.0 0.0.0.0 s0/0</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>ISP路由器配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Router#conf t</span><br><span class="line">Router(config)#host ISP</span><br><span class="line">ISP(config)#int s2/0</span><br><span class="line">ISP(config-if)#ip add 202.1.1.2 255.255.255.0</span><br><span class="line">ISP(config-if)#no shut</span><br><span class="line">ISP(config-if)#clock rate 64000</span><br><span class="line">ISP(config-if)#exit</span><br><span class="line">ISP(config)#int fa0/0</span><br><span class="line">ISP(config-if)#ip add 202.1.2.1 255.255.255.0</span><br><span class="line">ISP(config-if)#no shut</span><br><span class="line">ISP(config-if)#exit</span><br><span class="line">ISP(config)#</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>个人终端配置</p>
+<p><img src="https://pic.imgdb.cn/item/66828a04d9c307b7e9d23356.png"></p>
+</li>
+<li><p>SYX72-08服务器配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IpAddress:192.168.3.2</span><br><span class="line">SubnetMask:255.255.255.0</span><br><span class="line">Default GateWay:192.168.3.1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>SYX72-11服务器配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IpAddress:202.1.2.2</span><br><span class="line">SubnetMask:255.255.255.0</span><br><span class="line">Default GateWay:202.1.2.1</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="4-实验结果"><a href="#4-实验结果" class="headerlink" title="4.实验结果"></a>4.实验结果</h3><ul>
+<li><p>内部网络联通测试</p>
+<p><img src="https://pic.imgdb.cn/item/66828c66d9c307b7e9d6da0b.png"></p>
+</li>
+<li><p>服务器联通测试</p>
+<p><img src="https://pic.imgdb.cn/item/66828cd5d9c307b7e9d78db6.png"></p>
+<p><img src="https://pic.imgdb.cn/item/66828cd5d9c307b7e9d78de0.png"></p>
+</li>
+</ul>
+<h1 id="任务二"><a href="#任务二" class="headerlink" title="任务二"></a>任务二</h1><h2 id="中小型网吧网络设计方案"><a href="#中小型网吧网络设计方案" class="headerlink" title="中小型网吧网络设计方案"></a>中小型网吧网络设计方案</h2><h3 id="1-项目概述"><a href="#1-项目概述" class="headerlink" title="1 .项目概述"></a>1 .项目概述</h3><h4 id="1-1-项目背景"><a href="#1-1-项目背景" class="headerlink" title="1.1 项目背景"></a>1.1 项目背景</h4><ul>
+<li><strong>行业发展与贡献</strong>： 随着互联网行业和市场经济的快速发展，上网服务行业自20世纪以来迅速发展，成为社会公众获取学习、商务和娱乐资源的重要平台。网吧作为提供网络接触点的重要场所，对推动我国信息化发展起到了积极作用。</li>
+<li><strong>市场变化与挑战</strong>： 然而，随着网络服务的普及和移动设备的广泛使用，消费者对网吧的需求正在减少。个人拥有的网络移动设备和电脑使得传统网吧面临需求下降的挑战。传统网吧服务的同质化和缺乏竞争力成为行业发展的瓶颈。</li>
+<li><strong>发展方向与需求</strong>： 为了适应市场变化，满足消费者对网吧经济的新需求，网吧行业需要转型。新的发展策略聚焦于提供高速率、高带宽的上网体验，并结合个性化和增值服务来增强网吧的吸引力。这要求网吧进行网络方案的重新规划，构建能够支持这些服务的网络基础设施，以确保为不同用户群体提供定制化的上网体验。当前的重点在于设计和实施一个先进、灵活且用户友好的网络解决方案，以维持网吧行业的竞争力和可持续发展。</li>
+</ul>
+<h4 id="1-2-项目要求与目标"><a href="#1-2-项目要求与目标" class="headerlink" title="1.2. 项目要求与目标"></a>1.2. 项目要求与目标</h4><ul>
+<li><strong>项目愿景</strong>： 本项目致力于设计一个中小型个性化网吧的网络方案，目的是构建一个集网络、计算机技术和信息技术于一体的娱乐和管理平台。这种综合性平台将为用户提供一个多功能的上网环境，满足现代消费者对个性化服务的需求。</li>
+<li><strong>技术与服务需求</strong>： 项目的设计重点在于满足消费者对网络技术、服务质量和速率的期望。在高速互联网连接日益普及的今天，消费者期望网吧能提供至少与家庭网络相匹配的速率和带宽。因此，网络设计必须确保高速数据传输和充足的带宽，以支持多种在线活动，包括游戏、视频流和网页浏览。</li>
+<li><strong>安全性与品质要求</strong>： 除了高速和高带宽之外，项目的另一个核心目标是确保网络服务的安全性。这包括搭建合理的网络服务器架构，以及部署防火墙和访问控制等网络安全措施。这些安全技术不仅保护用户数据不受威胁，也确保了网络服务的稳定性和可靠性，满足消费者对安全上网环境的需求。通过实现这些目标，项目旨在打造一个既快速又安全的网吧网络环境。</li>
+</ul>
+<h3 id="2-需求分析"><a href="#2-需求分析" class="headerlink" title="2.需求分析"></a>2.需求分析</h3><h4 id="2-1-项目设计目标"><a href="#2-1-项目设计目标" class="headerlink" title="2.1 项目设计目标"></a>2.1 项目设计目标</h4><ul>
+<li><strong>综合性提升</strong>： 当前网吧行业的发展已经超越了基础的上网需求，转而注重提供更高层次的用户体验。网吧的硬件配置、室内环境设计以及配套服务都得到了显著提升，以满足消费者对于上网体验的更高期待。这要求网吧在设计时不仅要考虑高性能的设备，还要营造一个舒适、吸引人的环境。</li>
+<li><strong>网络服务的专业化</strong>： 随着在线网络游戏和视频点播服务的普及，网吧网络服务需要满足更高的技术标准。特别是对网络传输的时延和带宽有着严格的要求，因为这些因素直接影响到游戏和视频流的流畅度和用户体验的质量。因此，项目设计中必须特别关注网络的这两个关键性能指标。</li>
+<li><strong>高速稳定网络的构建</strong>： 本项目的设计目标是创建一个高速、稳定且低时延的网络环境。这意味着从网络架构的设计到设备的选型和部署，每一个环节都需要精心规划，以确保整个网吧网络能够提供无缝且高效的服务。通过实现这一目标，网吧将能够吸引并保留那些寻求高质量网络体验的用户，从而在竞争激烈的市场中脱颖而出。</li>
+</ul>
+<h4 id="2-2-项目需求特点分析"><a href="#2-2-项目需求特点分析" class="headerlink" title="2.2 项目需求特点分析"></a>2.2 项目需求特点分析</h4><ul>
+<li><strong>首先关注的是用户体验的重要性</strong>。网吧作为商业场所，其成功在很大程度上取决于用户满意度。用户期望获得快速、无缝的网络服务，尤其是端游玩家，对网络的稳定性和响应速度有着极高的要求。任何掉线或卡顿现象都可能迅速降低用户体验，影响网吧的声誉和收益。</li>
+<li>网吧的<strong>网络服务需求是多样化</strong>的，除了端游，视频点播和网页浏览也是用户常用的服务。这要求网吧的网络不仅要有高带宽支持多媒体内容的流畅播放，还要有足够稳定性保证各种网络活动同时进行时的互不干扰。随着技术的发展，网吧的网络设施还需具备良好的适应性和前瞻性，以支持新兴的游戏和应用。</li>
+<li>网络设计还需考虑<strong>成本效益和维护问题</strong>。在确保网络性能的前提下，选择性价比高的设备和解决方案是控制初期投资的关键。同时，网络的安全性和易维护性对于减少长期运营成本至关重要。网吧需要构建一个既能满足当前需求又具备未来扩展性的网络，同时确保网络的安全性和可靠性，以维护用户信任和业务的持续增长。</li>
+</ul>
+<h4 id="2-3-项目设计原则"><a href="#2-3-项目设计原则" class="headerlink" title="2.3 项目设计原则"></a>2.3 项目设计原则</h4><ul>
+<li><strong>实用性</strong>： 设计网吧网络时，实用性是首要考虑的原则。这意味着网络建设必须满足不同消费者的上网需求，包括为不同的网络业务配置相应的服务器。网吧的硬件系统结构应该布局合理，易于管理和维护，即使由非专业人员操作也能保持高效运行。</li>
+<li><strong>先进性</strong>： 鉴于通信技术和计算机技术日新月异的发展，网吧在硬件选择上应具有前瞻性，采用先进的设备以保持竞争力。选择成熟而尖端的设备，确保网吧能够适应未来几年的技术发展趋势，满足市场的竞争需求。</li>
+<li><strong>可扩展性</strong>： 随着服务需求和信息量的不断增长，网吧的网络系统设计必须具备良好的扩展性。在路由器、交换机和服务器等关键设备上预留足够的容量，采用模块化设计和简洁布线，以便于未来的系统升级和扩展。</li>
+<li><strong>可靠性</strong>： 网吧系统设计的可靠性关乎到网吧运营的持续性和稳定性。选择符合设计指标的硬件和软件产品，确保它们的性能稳定可靠。同时，强化系统集成和适配能力，以提升整个网络系统的稳定性。</li>
+<li><strong>安全性</strong>： 在网吧网络的设计中，安全性是至关重要的。需要在网络中集成防火墙和访问控制功能，确保不同终端间的信息资源得到有效共享，同时保护数据不受未授权访问的威胁。此外，实现系统的权限控制、用户身份验证、数据备份和数据存取权限控制，以增强网络安全防护能力</li>
+</ul>
+<h4 id="2-4-需求规定"><a href="#2-4-需求规定" class="headerlink" title="2.4 需求规定"></a>2.4 需求规定</h4><ul>
+<li><strong>整体设计与效果考量</strong>： 选择组网方案时，首先要从宏观角度考虑整体网络的设计架构和最终效果。这意味着设计方案不仅要在理论上可行，还要在实际部署中表现出高效、稳定和用户友好的特性。</li>
+<li><strong>性能指标的制定</strong>： 为了衡量设计方案的优劣，必须设定一系列具体的性能指标。这些指标应涵盖网络的关键性能参数，如带宽、延迟、吞吐量、可靠性和扩展性等，以确保网络在技术层面达到预期目标。</li>
+<li><strong>应用角度的考核</strong>： 从实际应用的角度出发，对网络能力进行综合评估。考虑网吧用户的实际需求和使用场景，如在线游戏、视频点播、网页浏览等，确保网络设计方案能够支持这些应用的顺畅运行，并提供良好的用户体验</li>
+</ul>
+<h4 id="2-5-网络功能目标"><a href="#2-5-网络功能目标" class="headerlink" title="2.5 网络功能目标"></a>2.5 网络功能目标</h4><ul>
+<li><strong>多功能应用支持</strong>： 网吧的网络设计必须能够支持多种应用系统，以满足不同用户的需求。这意味着网络应能够处理各种形式的信息传递，包括文本、数据以及多媒体流。为了实现这一点，网吧应建立一个包含多种服务器的网络，确保能够实现多功能集成和高效的资源利用。</li>
+<li><strong>高安全性</strong>： 安全性是网吧网络设计中的另一个核心要素。网络必须部署充分的安全措施，以保护数据传输的安全性，并确保服务器数据的顺畅访问。这包括使用防火墙、入侵检测系统和访问控制策略，以防止未授权访问和各种网络威胁。</li>
+<li><strong>可扩展性与冗余</strong>： 随着网吧业务的扩展和信息量的增长，网络必须具备良好的可扩展性，以适应网络结构的重组和变化。此外，设计中应包含一定的冗余，以便在网络流量增长或关键组件故障时，仍能保证服务的连续性和可靠性。</li>
+</ul>
+<h4 id="2-6-网络性能目标"><a href="#2-6-网络性能目标" class="headerlink" title="2.6 网络性能目标"></a>2.6 网络性能目标</h4><ul>
+<li>**延时： 网络延时，即数据从源头到目的地所需的时间，是衡量网络性能的关键指标。它包括传输延时、交换延时、访问延时和排队延时。用户特别关注网络响应时间，尤其是对实时性要求高的网络游戏和直播业务。网吧网络设计应将平均延时控制在关键应用系统不超过30ms，最大延时不超过150ms；其他应用系统平均延时不超过50ms，最大延时不超过300ms。这些指标可以通过网络测试工具进行测量。</li>
+<li><strong>吞吐量</strong>： 吞吐量指网络在单位时间内传输的数据量，受限于路径上最低吞吐量的环节。网吧网络的拓扑结构和链路容量直接影响吞吐量。为保证高性能，网吧与运营商宽带的连接应使用千兆以太网，而内部节点根据需求选择百兆或千兆连接。同时，应确保上层通信负载不超过吞吐量设定的80%，避免过载并及时扩容。</li>
+<li><strong>可靠性</strong>： 网络的可靠性体现在其连通性，特别是在链路或节点故障时的容错能力。为提高可靠性，网吧网络应限制单个链路或节点的终端数，并在分布式网络中实现节点的多路径连接，以便在故障发生时通过备用路径迂回传送数据。</li>
+<li><strong>成本控制</strong>： 在满足性能指标的前提下，成本控制是网吧网络设计的重要考虑因素。建设成本包括链路、集线器、终端设备、交换机等费用。在成本控制方面，应尽量减少昂贵路由器的使用，转而使用成本效益更高的交换机和三层交换机，以实现成本优化。</li>
+</ul>
+<h4 id="2-7-网络管理目标"><a href="#2-7-网络管理目标" class="headerlink" title="2.7 网络管理目标"></a>2.7 网络管理目标</h4><ul>
+<li><strong>网络设备的集中管理</strong>： 在网吧组网中，管理的对象包括通信链路、交换机、路由器、服务器和防火墙等关键网络设备。有效的网络管理策略要求在网络设计的早期阶段就对这些设备进行综合考虑和管理。这涉及到对设备配置、性能监控和故障排除的持续关注。</li>
+<li><strong>广播风暴的控制</strong>： 随着网吧中终端设备数量的增加，局域网内交换机的数据广播可能导致广播风暴，进而引起PC掉线或瞬断现象。为了防止这种情况，需要通过分层交换机和中心交换机实施VLAN划分，以隔离不同区域的广播流量。这种划分有助于抑制广播风暴，确保网络的稳定性和可靠性。</li>
+<li><strong>网络资源的统一分配与管理</strong>： 设计网络时，必须对网络资源进行统一的分配和管理。这包括IP地址、域名、子网掩码、网关和VLAN等关键参数。统一管理不仅简化了网络配置和变更过程，还提高了网络的可维护性和可扩展性。</li>
+<li><strong>网络监控与维护</strong>： 为了确保网络组网的正常运行，并方便技术人员进行管理，应在网络中集成网络管理系统（NMS）。网管系统负责监控网络性能、识别潜在问题、配置设备参数，并在出现问题时提供及时的故障响应和恢复。通过这种方式，技术人员可以高效地管理和维护网络，减少停机时间，提高服务质量。</li>
+</ul>
+<h3 id="3-项目实施方案"><a href="#3-项目实施方案" class="headerlink" title="3.项目实施方案"></a>3.项目实施方案</h3><h4 id="3-1-硬件设备选择"><a href="#3-1-硬件设备选择" class="headerlink" title="3.1 硬件设备选择"></a>3.1 硬件设备选择</h4><p>​	用至少六台主机设备作为网吧中的主要用户，其他的硬件需要主要为：一台中央交换机、四台多端口的区交换机、两台路由器，两台服务器。</p>
+<p>​	网吧划分为高级VIP包厢区（可以抽烟），普通VIP区（可以抽烟），电视区，游戏区，每个区对应于一个区交换机，每个区内分配至少三台主机设备；同时每个区各自划分为一个子网。在网络中，需要影视服务器、游戏服务器两种服务器，服务器通过一个交换机与中心交换机进行连接。</p>
+<h4 id="3-2-硬件设备清单"><a href="#3-2-硬件设备清单" class="headerlink" title="3.2 硬件设备清单"></a>3.2 硬件设备清单</h4><table>
+<thead>
+<tr>
+<th>设备名</th>
+<th>型号</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PC</td>
+<td>i5-12600KF，PRO Z690-P DDR4 ，RTX 3090，内存16G</td>
+<td>200台</td>
+</tr>
+<tr>
+<td>中央交换机</td>
+<td>TL-SL3226P&#x2F;3319&#x2F;3210</td>
+<td>1台</td>
+</tr>
+<tr>
+<td>区交换机</td>
+<td>TL-SF1048&#x2F;1024&#x2F;1016</td>
+<td>5台</td>
+</tr>
+<tr>
+<td>路由器</td>
+<td>TL-R480E&#x2F;490E</td>
+<td>2台</td>
+</tr>
+<tr>
+<td>服务器交换机</td>
+<td>TL-SG1008&#x2F;1005</td>
+<td>1台</td>
+</tr>
+<tr>
+<td>游戏服务器</td>
+<td>P4 1.6GHz CPU、技嘉845D主版、Kingmax 256MB DDR内存、TNT2显卡、D-Llink530网卡、希捷酷鱼四40GB</td>
+<td>1台</td>
+</tr>
+<tr>
+<td>视频服务器</td>
+<td>P4 1.6GHz CPU、技嘉845D主版、Kingmax 256MB DDR内存、TNT2显卡、D-Llink530网卡、希捷酷鱼五120GB×2</td>
+<td>1台</td>
+</tr>
+</tbody></table>
+<h4 id="3-3-硬件设备选择分析"><a href="#3-3-硬件设备选择分析" class="headerlink" title="3.3 硬件设备选择分析"></a>3.3 硬件设备选择分析</h4><p>​	使用TP-Link TL-R480E&#x2F;490E作为网吧路由器，可以享受到多WAN口带来的负载均衡和故障转移、VLAN技术提供的流量隔离与安全增强、以及易于管理的Web界面等优势，同时还能进行流量控制和享受VPN远程访问功能。然而，这些路由器可能在处理大规模用户访问、高级QoS配置、专业级安全策略以及长期稳定性方面存在局限。因此，如果网吧规模较小且预算有限，TL-R480E&#x2F;490E可以是一个成本效益高的选择；但如果网吧规模较大或对网络性能有更高要求，则可能需要考虑更专业的商用路由器。</p>
+<p>​	使用TP-Link TL-SL3226P&#x2F;3319&#x2F;3210千兆网管交换机作为网吧核心交换机，可以获得高性能的千兆以太网连接，支持大量数据传输和高速网络访问，同时具备网管功能，允许您进行VLAN划分、流量控制和安全设置，以优化网络性能和增强网络安全。这些交换机的易于管理特性和成本效益对于中小规模网吧尤其有利。然而，它们可能在硬件扩展性、处理极端高负载或提供某些高级网络功能方面不如高端商用交换机。因此，如果网吧对网络稳定性和性能有较高要求，或者预计会迅速扩展，可能需要考虑更高性能和可扩展性更强的商用交换机解决方案。对于大多数中小规模网吧，TL-SL3226P&#x2F;3319&#x2F;3210交换机提供了一个平衡性能、功能和成本的有效选择。</p>
+<p>​	使用TP-Link TL-SG1008&#x2F;1005作为网吧服务器交换机，可以利用其提供的8个千兆以太网端口来实现快速的网络连接和数据传输，这对于保证网吧内多用户同时在线时的网络稳定性和速度至关重要。这些交换机支持即插即用，简化了安装过程，且价格相对实惠，适合预算有限的网吧业主</p>
+<h4 id="3-4-传输介质"><a href="#3-4-传输介质" class="headerlink" title="3.4 传输介质"></a>3.4 传输介质</h4><p>​	选择<strong>光纤</strong>作为网吧的传输介质，可以提供极高的数据传输速率和远距离传输能力，非常适合对带宽和稳定性有高要求的网吧环境。光纤不受电磁干扰，保证了数据传输的稳定性和可靠性，对于构建一个高速且低延迟的网络至关重要。然而，光纤的成本相对较高，包括线材、接续和专业安装维护的费用，这可能会增加初始投资。不过，考虑到长期运营的效率和网络升级的便利性，光纤的高初期成本可以被其卓越的性能和未来的低维护费用所抵消。</p>
+<h4 id="3-5-软件准备"><a href="#3-5-软件准备" class="headerlink" title="3.5 软件准备"></a>3.5 软件准备</h4><p>​	本项目使用Cisco Packet Tracer 8.0 完成中小型个性化网吧虚拟网络的设计和构建，通过实时的查看内部流程和模拟仿真，完成复杂项目的实现。</p>
+<h4 id="3-6-网络拓扑规划"><a href="#3-6-网络拓扑规划" class="headerlink" title="3.6 网络拓扑规划"></a>3.6 网络拓扑规划</h4><h5 id="3-6-1-网络划分"><a href="#3-6-1-网络划分" class="headerlink" title="3.6.1 网络划分"></a>3.6.1 网络划分</h5><pre><code>  中小型网吧的网络组成主要由三个部分组成：作为中心交换机的核心三层交换机，作为区交换机的接入交换机和出口路由设备。核心三层交换机构成网吧局域网的主要结构，出口路由设备作为网吧与电信运营商之间的连接接口。
+</code></pre>
+<p>  网吧的核心设备为作为中心交换机的三层交换机，其主要功能为：完成网吧内部各个区域的主机、网吧内部服务器群和出口路由设备之间的内部路由；网吧内部的设备的地址分配与隔离等。</p>
+<h5 id="3-6-2-网络构建方案"><a href="#3-6-2-网络构建方案" class="headerlink" title="3.6.2 网络构建方案"></a>3.6.2 网络构建方案</h5><pre><code>  对于规模略大的中型网吧，在核心三层交换机上根据上网区域划分不同的VLAN，各VLAN间设置ACL访问控制规则，并配置端口广播风暴抑制，以防止过量广播报文致使网络拥塞。同时ARP静态表项的双向绑定配置在核心三层交换机和各台终端之间，防止ARP攻击。最后，网关路由器和核心三层交换机的IP地址必须配在同一VLAN中，并在各自的路由表中设置静态路由指向对方
+</code></pre>
+<h4 id="3-7-网络拓扑结构设计"><a href="#3-7-网络拓扑结构设计" class="headerlink" title="3.7 网络拓扑结构设计"></a>3.7 网络拓扑结构设计</h4><p>​	这个小型网吧局域网设计采用分层的网络拓扑结构，包括核心层、分布层和接入层。网吧划分为多个功能区域，如游戏区、VIP包厢区、普通VIP区和电视区，每个区域的PC工作站根据所属的服务类型被分配到不同的VLAN和IP网段。</p>
+<p>​	服务器位于VLAN60，拥有独立的网段172.16.2.0&#x2F;24，用于提供关键服务。接入层由交换机构成，负责连接PC工作站，而其它交换机作为分布层，连接接入层交换机并提供到核心层的连接。核心层可能部署了高性能的以太网交换机，确保快速的数据传输。至少有一台路由器负责提供外网连接。整个网络设计注重安全性和隔离性，使用VLAN技术来限制不同区域间的广播流量，同时保证了网络的扩展性和成本效益。网络还需要集中管理，以便于配置、监控和维护。</p>
+<h4 id="3-8-网络数据规划"><a href="#3-8-网络数据规划" class="headerlink" title="3.8 网络数据规划"></a>3.8 网络数据规划</h4><h5 id="3-8-1-IP地址规划"><a href="#3-8-1-IP地址规划" class="headerlink" title="3.8.1 IP地址规划"></a>3.8.1 IP地址规划</h5><p>考虑设计一个小型网吧实现，由于规模较小使用C类网络，具体分为高级VIP包厢区，普通VIP，电视区，游戏区</p>
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>IP地址范围</th>
+<th>子网掩码</th>
+<th>网关地址</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>高级VIP包厢区</td>
+<td>192.168.10.2–192.168.10.254</td>
+<td>255.255.255.0</td>
+<td>192.168.10.1</td>
+</tr>
+<tr>
+<td>普通VIP区</td>
+<td>192.168.20.2–192.168.20.254</td>
+<td>255.255.255.0</td>
+<td>192.168.20.1</td>
+</tr>
+<tr>
+<td>电视区</td>
+<td>192.168.30.2–192.168.30.254</td>
+<td>255.255.255.0</td>
+<td>192.168.30.1</td>
+</tr>
+<tr>
+<td>游戏区</td>
+<td>192.168.40.2–192.168.40.254</td>
+<td>255.255.255.0</td>
+<td>192.168.40.1</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h5 id="3-8-2-VLAN规划"><a href="#3-8-2-VLAN规划" class="headerlink" title="3.8.2 VLAN规划"></a>3.8.2 VLAN规划</h5><p>对于不同的区域，使用不同的VLAN进行管理。既防止了广播风暴，还方便于资费控制。</p>
+<table>
+<thead>
+<tr>
+<th>VLAN号</th>
+<th>网段</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>192.168.10.0&#x2F;24</td>
+<td>高级VIP区</td>
+</tr>
+<tr>
+<td>20</td>
+<td>192.168.20.0&#x2F;24</td>
+<td>普通VIP区</td>
+</tr>
+<tr>
+<td>30</td>
+<td>192.168.30.0&#x2F;24</td>
+<td>电视区</td>
+</tr>
+<tr>
+<td>40</td>
+<td>192.168.40.0&#x2F;24</td>
+<td>游戏区</td>
+</tr>
+<tr>
+<td>50</td>
+<td>192.168.50.0&#x2F;24</td>
+<td>游戏区</td>
+</tr>
+<tr>
+<td>60</td>
+<td>192.168.60.0&#x2F;24</td>
+<td>服务器区</td>
+</tr>
+</tbody></table>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="4-可行性分析"><a href="#4-可行性分析" class="headerlink" title="4.可行性分析"></a>4.可行性分析</h3><h4 id="4-1-用户接口"><a href="#4-1-用户接口" class="headerlink" title="4.1 用户接口"></a>4.1 用户接口</h4><ul>
+<li>客户机配置：选择性能强劲的PC配置，包括高速CPU、高性能显卡、足够内存和快速存储设备。</li>
+<li>操作系统：通常选择Windows操作系统，因其广泛的游戏和应用程序兼容性。</li>
+<li>应用软件：安装流行的游戏和多媒体应用软件，确保与操作系统和硬件的兼容性。</li>
+</ul>
+<h4 id="4-2-投资费用"><a href="#4-2-投资费用" class="headerlink" title="4.2 投资费用"></a>4.2 投资费用</h4><ul>
+<li>初始投资成本：硬件成本包括200台PC、中央交换机、区交换机、路由器、服务器交换机、游戏服务器和视频服务器的购置费用。软件成本包括操作系统、管理软件、应用软件的授权费用，以及可能的定制开发费用。网络建设成本包括布线、集线器、终端设备、交换机等网络基础设施的部署费用。</li>
+<li>运营成本：人员成本有网吧运营所需的员工工资，包括技术人员、管理人员和客户服务人员。维护费用有日常运维成本，包括设备维护、软件更新和技术支持。能源费用有网吧的电力消耗，包括电脑、网络设备、照明和空调等</li>
+</ul>
+<h4 id="4-3-成本回收"><a href="#4-3-成本回收" class="headerlink" title="4.3 成本回收"></a>4.3 成本回收</h4><ul>
+<li>收益预测：网吧服务的硬收益，和一些打广告，做宣传，提供食品的软收益</li>
+<li>回收策略：制定会员制度，吸烟区与非吸烟区，偶尔的充值福利，落后设备变卖</li>
+</ul>
+<h3 id="5-项目实施"><a href="#5-项目实施" class="headerlink" title="5. 项目实施"></a>5. 项目实施</h3><h4 id="5-1-拓扑结构搭建"><a href="#5-1-拓扑结构搭建" class="headerlink" title="5.1 拓扑结构搭建"></a>5.1 拓扑结构搭建</h4><img src="https://pic.imgdb.cn/item/66826561d9c307b7e9991ae7.png" style="zoom:80%;" />
+
+<h4 id="5-2-配置设备参数"><a href="#5-2-配置设备参数" class="headerlink" title="5.2 配置设备参数"></a>5.2 配置设备参数</h4><ul>
+<li><p>配置终端PC设备：配置终端设备的主要工作是按照网络的数据规划配置网络中设备的IP地址、掩码和网关地址(<strong>以VIP包厢区SYX72-00为例</strong>)。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IpAddress:192.168.10.10</span><br><span class="line">SubnetMask:255.255.255.0</span><br><span class="line">Default GateWay:192.168.10.1</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic.imgdb.cn/item/668261d3d9c307b7e9924b7c.png"></p>
+</li>
+<li><p>配置游戏服务器设备：配置终端设备的主要工作是按照网络的数据规划配置网络中设备的IP地址、掩码和网关地址(<strong>以游戏服务器SYX72-31为例</strong>)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">IpAddress:172.16.2.20</span><br><span class="line">SubnetMask：255.255.255.0</span><br><span class="line">Default Gateway:172.16.2.1</span><br></pre></td></tr></table></figure>
+<p><img src="https://pic.imgdb.cn/item/668261f8d9c307b7e9935e7b.png"></p>
+</li>
+<li><p>配置区交换机：接入交换机的配置，主要是设置各个端口的传输模式：与设备直接相连的端口配置为Access模式，与中心交换机相连的端口则配置为Trunk模式（<strong>此处仅展示VIP包厢区交换机SYX72-11的具体配置</strong>）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">spanning-tree mode pvst      // 启用PVST模式，为每个VLAN配置一个独立的生成树实例</span><br><span class="line">spanning-tree extend system-id // 启用系统ID扩展，允许不同交换机使用相同的优先级</span><br><span class="line"></span><br><span class="line">// 配置FastEthernet接口，将它们设置为访问模式并分配到VLAN 10</span><br><span class="line">interface FastEthernet0/1</span><br><span class="line"> switchport access vlan 10  // 接口FastEthernet0/1分配到VLAN 10</span><br><span class="line">interface FastEthernet0/2</span><br><span class="line"> switchport access vlan 10  // 接口FastEthernet0/2分配到VLAN 10</span><br><span class="line">interface FastEthernet0/3</span><br><span class="line"> switchport access vlan 10  // 接口FastEthernet0/3分配到VLAN 10</span><br><span class="line"></span><br><span class="line">// 声明了FastEthernet0/4至FastEthernet0/24接口，但没有进一步配置,默认为VLAN1</span><br><span class="line">interface FastEthernet0/4</span><br><span class="line">interface FastEthernet0/5</span><br><span class="line">interface FastEthernet0/6</span><br><span class="line">interface FastEthernet0/7</span><br><span class="line">interface FastEthernet0/8</span><br><span class="line">interface FastEthernet0/9</span><br><span class="line">interface FastEthernet0/10</span><br><span class="line">interface FastEthernet0/11</span><br><span class="line">interface FastEthernet0/12</span><br><span class="line">interface FastEthernet0/13</span><br><span class="line">interface FastEthernet0/14</span><br><span class="line">interface FastEthernet0/15</span><br><span class="line">interface FastEthernet0/16</span><br><span class="line">interface FastEthernet0/17</span><br><span class="line">interface FastEthernet0/18</span><br><span class="line">interface FastEthernet0/19</span><br><span class="line">interface FastEthernet0/20</span><br><span class="line">interface FastEthernet0/21</span><br><span class="line">interface FastEthernet0/22</span><br><span class="line">interface FastEthernet0/23</span><br><span class="line">interface FastEthernet0/24</span><br><span class="line"></span><br><span class="line">// 配置VLAN1接口，不分配IP地址，并关闭接口</span><br><span class="line">interface Vlan1</span><br><span class="line"> no ip address             // 禁止为VLAN1接口分配IP地址</span><br><span class="line"> shutdown                 // 关闭VLAN1接口，不参与数据传输</span><br><span class="line"></span><br><span class="line">// 配置控制台和虚拟终端线路，启用登录认证</span><br><span class="line">line con 0                // 配置控制台线路</span><br><span class="line">line vty 0 4              // 配置虚拟终端线路0到4</span><br><span class="line"> login                    // 启用登录认证，要求输入用户名和密码</span><br><span class="line">line vty 5 15             // 配置虚拟终端线路5到15</span><br><span class="line"> login</span><br><span class="line"></span><br><span class="line">end                        // 结束配置模式</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>配置中心交换机（SYX72-20）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">enable</span><br><span class="line">conf t</span><br><span class="line"></span><br><span class="line">vlan 10	//创建VLAN10</span><br><span class="line">exit</span><br><span class="line">vlan 20	//创建VLAN20</span><br><span class="line">exit</span><br><span class="line">vlan 30	//创建VLAN30</span><br><span class="line">exit</span><br><span class="line">vlan 40	//创建VLAN40</span><br><span class="line">exit</span><br><span class="line">vlan 50	//创建VLAN50</span><br><span class="line">exit</span><br><span class="line">vlan 60	////创建VLAN60</span><br><span class="line">exit</span><br><span class="line">    </span><br><span class="line">ip routing                   // 启用IP路由功能，允许设备在不同网络之间转发IP数据包</span><br><span class="line"></span><br><span class="line">spanning-tree mode pvst      // 设置生成树协议模式为PVST（Per-VLAN Spanning Tree），每个VLAN实例化一个生成树</span><br><span class="line"></span><br><span class="line">// 接口配置</span><br><span class="line">interface FastEthernet0/1    // 进入FastEthernet0/1接口的配置模式</span><br><span class="line"> switchport access vlan 10  // 配置接口为访问模式，属于VLAN 10</span><br><span class="line"></span><br><span class="line">interface FastEthernet0/2    // 进入FastEthernet0/2接口的配置模式</span><br><span class="line"> switchport access vlan 20  // 配置接口为访问模式，属于VLAN 20</span><br><span class="line"></span><br><span class="line">interface FastEthernet0/3    // 进入FastEthernet0/3接口的配置模式</span><br><span class="line"> switchport access vlan 30  // 配置接口为访问模式，属于VLAN 30</span><br><span class="line"></span><br><span class="line">interface FastEthernet0/4    // 进入FastEthernet0/4接口的配置模式</span><br><span class="line"> switchport trunk allowed vlan 40,50 // 配置接口为Trunk模式，只允许VLAN 40和50的数据包通过</span><br><span class="line"></span><br><span class="line">interface FastEthernet0/5    // 进入FastEthernet0/5接口的配置模式</span><br><span class="line"> no switchport               // 将接口设置为非Switchport模式，即Layer 3接口</span><br><span class="line"> ip address 10.0.0.10 255.255.255.0 // 为接口分配一个IP地址，用于管理或路由</span><br><span class="line"> duplex auto                 // 设置接口的双工模式为自动协商，以匹配连接设备</span><br><span class="line"> speed auto                  // 设置接口的速率为自动协商，以匹配连接设备</span><br><span class="line"></span><br><span class="line">// 接口FastEthernet0/6 至 FastEthernet0/24 未配置，将保持默认设置</span><br><span class="line"></span><br><span class="line">interface GigabitEthernet0/1 // 进入GigabitEthernet0/1接口的配置模式，但未配置任何参数</span><br><span class="line">interface GigabitEthernet0/2 // 进入GigabitEthernet0/2接口的配置模式，同样未配置任何参数</span><br><span class="line"></span><br><span class="line">// VLAN接口配置</span><br><span class="line">interface Vlan1               // 进入VLAN 1的配置模式</span><br><span class="line"> no ip address               // 指定VLAN接口没有IP地址，通常用于管理VLAN</span><br><span class="line"> shutdown                    // 关闭VLAN接口，使其不参与网络通信</span><br><span class="line"></span><br><span class="line">interface Vlan10               // 进入VLAN 10的配置模式</span><br><span class="line"> mac-address 0060.4709.ab01   // 为VLAN 10设置一个MAC地址，用于识别或安全目的</span><br><span class="line"> ip address 192.168.10.1 255.255.255.0 // 为VLAN 10分配一个IP地址，用于网络通信</span><br><span class="line"></span><br><span class="line">interface Vlan20               // 进入VLAN 20的配置模式</span><br><span class="line"> mac-address 0060.4709.ab02   // 为VLAN 20设置一个MAC地址</span><br><span class="line"> ip address 192.168.20.1 255.255.255.0 // 为VLAN 20分配一个IP地址</span><br><span class="line"></span><br><span class="line">interface Vlan30               // 进入VLAN 30的配置模式</span><br><span class="line"> mac-address 0060.4709.ab03   // 为VLAN 30设置一个MAC地址</span><br><span class="line"> ip address 192.168.30.1 255.255.255.0 // 为VLAN 30分配一个IP地址</span><br><span class="line"></span><br><span class="line">interface Vlan40               // 进入VLAN 40的配置模式</span><br><span class="line"> mac-address 0060.4709.ab04   // 为VLAN 40设置一个MAC地址</span><br><span class="line"> ip address 192.168.40.1 255.255.255.0 // 为VLAN 40分配一个IP地址</span><br><span class="line"></span><br><span class="line">interface Vlan50               // 进入VLAN 50的配置模式</span><br><span class="line"> mac-address 0060.4709.ab05   // 为VLAN 50设置一个MAC地址</span><br><span class="line"> ip address 192.168.50.1 255.255.255.0 // 为VLAN 50分配一个IP地址</span><br><span class="line"></span><br><span class="line">// 路由配置</span><br><span class="line">ip route 172.16.2.0 255.255.255.0 FastEthernet0/5 // 设置默认路由，将172.16.2.0/24网络的流量通过FastEthernet0/5接口</span><br><span class="line">ip route 222.198.40.0 255.255.255.0 FastEthernet0/5 // 设置特定路由，将222.198.40.0/24网络的流量通过FastEthernet0/5接口</span><br><span class="line"></span><br><span class="line">// NetFlow配置</span><br><span class="line">ip flow-export version 9     // 配置NetFlow版本9，用于收集和导出网络流量信息</span><br><span class="line"></span><br><span class="line">// 访问控制配置</span><br><span class="line">line con 0                  // 配置控制台接口（物理访问）</span><br><span class="line">line aux 0                  // 配置辅助接口，通常用于远程控制台或调制解调器连接</span><br><span class="line">line vty 0 4                // 配置虚拟终端线路，用于SSH或Telnet远程登录</span><br><span class="line"> login                       // 要求远程登录用户进行身份验证</span><br><span class="line"></span><br><span class="line">end                          // 结束配置模式，返回到特权执行模式</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>配置出口路由器(SYX72-34)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">ip cef                      // 启用Cisco Express Forwarding (CEF)，一种高效的IP路由技术</span><br><span class="line">no ipv6 cef                 // 禁用IPv6的CEF，因为目前只使用IPv4</span><br><span class="line"></span><br><span class="line">spanning-tree mode pvst      // 设置生成树协议模式为PVST，防止网络环路</span><br><span class="line"></span><br><span class="line">// 接口配置</span><br><span class="line">interface FastEthernet0/0   // 进入FastEthernet0/0接口配置模式</span><br><span class="line">ip address 10.0.0.20 255.255.255.0 // 为接口分配IP地址，子网掩码为 /24</span><br><span class="line">duplex auto                // 设置接口的双工模式为自动协商</span><br><span class="line">speed auto                 // 设置接口的速率为自动协商</span><br><span class="line"></span><br><span class="line">interface FastEthernet0/1   // 进入FastEthernet0/1接口配置模式</span><br><span class="line">ip address 172.16.2.1 255.255.255.0 // 为接口分配IP地址，子网掩码为 /24</span><br><span class="line">duplex auto                // 设置接口的双工模式为自动协商</span><br><span class="line">speed auto                 // 设置接口的速率为自动协商</span><br><span class="line"></span><br><span class="line">interface Serial0/0/0       // 进入Serial0/0/0接口配置模式</span><br><span class="line">ip address 222.198.38.10 255.255.255.0 // 为串行接口分配IP地址，子网掩码为 /24</span><br><span class="line"></span><br><span class="line">interface Vlan1               // 进入VLAN 1的配置模式</span><br><span class="line">no ip address               // 指定VLAN接口没有IP地址，通常用于管理VLAN</span><br><span class="line">shutdown                    // 关闭VLAN接口，使其不参与网络通信</span><br><span class="line"></span><br><span class="line">// 路由配置</span><br><span class="line">ip classless                // 启用无类域间路由，允许更灵活的路由聚合</span><br><span class="line">ip route 172.16.2.0 255.255.255.0 FastEthernet0/1 // 设置静态路由，将172.16.2.0/24网络的流量导向FastEthernet0/1接口</span><br><span class="line">ip route 192.168.10.0 255.255.255.0 FastEthernet0/0 // 设置静态路由，将192.168.10.0/24网络的流量导向FastEthernet0/0接口</span><br><span class="line">ip route 192.168.20.0 255.255.255.0 FastEthernet0/0 // 设置静态路由，将192.168.20.0/24网络的流量导向FastEthernet0/0接口</span><br><span class="line">ip route 192.168.30.0 255.255.255.0 FastEthernet0/0 // 设置静态路由，将192.168.30.0/24网络的流量导向FastEthernet0/0接口</span><br><span class="line">ip route 192.168.40.0 255.255.255.0 FastEthernet0/0 // 设置静态路由，将192.168.40.0/24网络的流量导向FastEthernet0/0接口</span><br><span class="line">ip route 192.168.50.0 255.255.255.0 FastEthernet0/0 // 设置静态路由，将192.168.50.0/24网络的流量导向FastEthernet0/0接口</span><br><span class="line">ip route 222.198.40.0 255.255.255.0 Serial0/0/0 // 设置静态路由，将222.198.40.0/24网络的流量导向Serial0/0/0接口</span><br><span class="line"></span><br><span class="line">// NetFlow配置</span><br><span class="line">ip flow-export version 9     // 配置NetFlow版本9，用于收集和导出网络流量信息</span><br><span class="line"></span><br><span class="line">// 访问控制配置</span><br><span class="line">line con 0                  // 配置控制台接口，用于物理访问</span><br><span class="line">line aux 0                  // 配置辅助接口，通常用于远程控制台或调制解调器连接</span><br><span class="line">line vty 0 4                // 配置虚拟终端线路，用于SSH或Telnet远程登录</span><br><span class="line"> login                       // 要求远程登录用户进行身份验证</span><br><span class="line"></span><br><span class="line">end                          // 结束配置模式，返回到特权执行模式</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>配置外网路由器(SYX72-35)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">ip cef                       // 启用CEF（Cisco Express Forwarding）快速交换</span><br><span class="line">no ipv6 cef                  // 禁用IPv6的CEF</span><br><span class="line">spanning-tree mode pvst      // 将生成树模式设置为PVST（Per-VLAN Spanning Tree）</span><br><span class="line"></span><br><span class="line">interface FastEthernet0/0    // 进入FastEthernet0/0接口配置模式</span><br><span class="line"> ip address 222.198.40.1 255.255.255.0  // 为接口分配IP地址和子网掩码</span><br><span class="line"> duplex auto                  // 启用自动双工模式</span><br><span class="line"> speed auto                   // 启用自动速度检测</span><br><span class="line"></span><br><span class="line">interface FastEthernet0/1    // 进入FastEthernet0/1接口配置模式</span><br><span class="line"> no ip address               // 不为该接口分配IP地址</span><br><span class="line"> duplex auto                  // 启用自动双工模式</span><br><span class="line"> speed auto                   // 启用自动速度检测</span><br><span class="line"> shutdown                     // 关闭该接口</span><br><span class="line"></span><br><span class="line">interface Serial0/0/0          // 进入Serial0/0/0接口配置模式</span><br><span class="line"> ip address 222.198.38.20 255.255.255.0  // 为接口分配IP地址和子网掩码</span><br><span class="line"> clock rate 64000             // 设置时钟速率为64000bps</span><br><span class="line"></span><br><span class="line">interface Vlan1                // 进入VLAN1接口配置模式</span><br><span class="line"> no ip address                // 不为VLAN1分配IP地址</span><br><span class="line"> shutdown                     // 关闭VLAN1接口</span><br><span class="line"></span><br><span class="line">ip classless                  // 启用无类路由，允许路由器根据最长前缀匹配来路由数据包</span><br><span class="line">ip route 172.16.2.0 255.255.255.0 Serial0/0/0  // 添加静态路由，将172.16.2.0/24的流量导向Serial0/0/0接口</span><br><span class="line">ip route 192.168.10.0 255.255.255.0 Serial0/0/0  // 添加静态路由，将192.168.10.0/24的流量导向Serial0/0/0接口</span><br><span class="line">ip route 192.168.20.0 255.255.255.0 Serial0/0/0  // 添加静态路由，将192.168.20.0/24的流量导向Serial0/0/0接口</span><br><span class="line">ip route 192.168.30.0 255.255.255.0 Serial0/0/0  // 添加静态路由，将192.168.30.0/24的流量导向Serial0/0/0接口</span><br><span class="line">ip route 192.168.40.0 255.255.255.0 Serial0/0/0  // 添加静态路由，将192.168.40.0/24的流量导向Serial0/0/0接口</span><br><span class="line">ip route 192.168.50.0 255.255.255.0 Serial0/0/0  // 添加静态路由，将192.168.50.0/24的流量导向Serial0/0/0接口</span><br><span class="line"></span><br><span class="line">ip flow-export version 9      // 配置IP流导出版本为9</span><br><span class="line">line con 0                   // 配置控制台接口</span><br><span class="line">line aux 0                   // 配置辅助接口</span><br><span class="line">line vty 0 4                 // 配置远程登录的虚拟终端（VTY）0到4</span><br><span class="line"> login                       // 启用登录认证</span><br><span class="line"></span><br><span class="line">end                          // 结束配置模式</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置服务器群交换机(SYX72-33)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">spanning-tree mode pvst      // 启用PVST+模式，为每个VLAN配置一个独立的生成树实例</span><br><span class="line">spanning-tree extend system-id // 启用生成树的系统ID扩展，允许不同交换机使用相同的优先级</span><br><span class="line"></span><br><span class="line">// 配置FastEthernet接口，将它们设置为访问模式并分配到VLAN 60</span><br><span class="line">interface FastEthernet0/1</span><br><span class="line"> switchport access vlan 60  // 将接口FastEthernet0/1分配到VLAN 60</span><br><span class="line"> switchport mode access     // 设置接口FastEthernet0/1为访问模式</span><br><span class="line">interface FastEthernet0/2</span><br><span class="line"> switchport access vlan 60  // 将接口FastEthernet0/2分配到VLAN 60</span><br><span class="line">// 接口FastEthernet0/3已经配置为VLAN 60，但未显示配置命令，假设与FastEthernet0/1和0/2相同</span><br><span class="line">interface FastEthernet0/3</span><br><span class="line"> switchport access vlan 60  // (假设) 将接口FastEthernet0/3分配到VLAN 60</span><br><span class="line"> </span><br><span class="line">//声明了FastEthernet0/4至FastEthernet0/24接口，但没有进一步配置,默认为VLAN1</span><br><span class="line">interface FastEthernet0/4</span><br><span class="line">interface FastEthernet0/5</span><br><span class="line">interface FastEthernet0/6</span><br><span class="line">interface FastEthernet0/7</span><br><span class="line">interface FastEthernet0/8</span><br><span class="line">interface FastEthernet0/9</span><br><span class="line">interface FastEthernet0/10</span><br><span class="line">interface FastEthernet0/11</span><br><span class="line">interface FastEthernet0/12</span><br><span class="line">interface FastEthernet0/13</span><br><span class="line">interface FastEthernet0/14</span><br><span class="line">interface FastEthernet0/15</span><br><span class="line">interface FastEthernet0/16</span><br><span class="line">interface FastEthernet0/17</span><br><span class="line">interface FastEthernet0/18</span><br><span class="line">interface FastEthernet0/19</span><br><span class="line">interface FastEthernet0/20</span><br><span class="line">interface FastEthernet0/21</span><br><span class="line">interface FastEthernet0/22</span><br><span class="line">interface FastEthernet0/23</span><br><span class="line">interface FastEthernet0/24</span><br><span class="line"></span><br><span class="line">// 配置VLAN1接口，不分配IP地址，并关闭接口</span><br><span class="line">interface Vlan1</span><br><span class="line"> no ip address             // 禁止为VLAN1接口分配IP地址</span><br><span class="line"> shutdown                 // 关闭VLAN1接口，不参与数据传输</span><br><span class="line"></span><br><span class="line">// 配置控制台和虚拟终端线路，启用登录认证</span><br><span class="line">line con 0                // 配置控制台线路0</span><br><span class="line">line vty 0 4              // 配置虚拟终端线路0到4，用于远程登录</span><br><span class="line">login                    // 启用登录认证，要求输入用户名和密码</span><br><span class="line">line vty 5 15             // 配置虚拟终端线路5到15，用于远程登录</span><br><span class="line">login</span><br><span class="line"></span><br><span class="line">end                        // 结束配置模式</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>配置外网交换机(SYX72-36)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">spanning-tree mode pvst      // 启用PVST（Per-VLAN Spanning Tree）模式，为每个VLAN配置一个独立的生成树实例</span><br><span class="line">spanning-tree extend system-id // 启用生成树的系统ID扩展，有助于在多个交换机环境中优化生成树行为</span><br><span class="line"></span><br><span class="line">// 声明了所有的FastEthernet接口</span><br><span class="line">interface FastEthernet0/1</span><br><span class="line">interface FastEthernet0/2</span><br><span class="line">interface FastEthernet0/3</span><br><span class="line">interface FastEthernet0/4</span><br><span class="line">interface FastEthernet0/5</span><br><span class="line">interface FastEthernet0/6</span><br><span class="line">interface FastEthernet0/7</span><br><span class="line">interface FastEthernet0/8</span><br><span class="line">interface FastEthernet0/9</span><br><span class="line">interface FastEthernet0/10</span><br><span class="line">interface FastEthernet0/11</span><br><span class="line">interface FastEthernet0/12</span><br><span class="line">interface FastEthernet0/13</span><br><span class="line">interface FastEthernet0/14</span><br><span class="line">interface FastEthernet0/15</span><br><span class="line">interface FastEthernet0/16</span><br><span class="line">interface FastEthernet0/17</span><br><span class="line">interface FastEthernet0/18</span><br><span class="line">interface FastEthernet0/19</span><br><span class="line">interface FastEthernet0/20</span><br><span class="line">interface FastEthernet0/21</span><br><span class="line">interface FastEthernet0/22</span><br><span class="line">interface FastEthernet0/23</span><br><span class="line">interface FastEthernet0/24</span><br><span class="line"></span><br><span class="line">// 配置VLAN1接口，不分配IP地址，并关闭接口</span><br><span class="line">interface Vlan1</span><br><span class="line">no ip address             // 指定VLAN1接口不分配IP地址，通常用于管理VLAN</span><br><span class="line">shutdown                 // 关闭VLAN1接口，使其不参与数据传输</span><br><span class="line"></span><br><span class="line">// 配置控制台和虚拟终端（vty）线路，启用登录认证</span><br><span class="line">line con 0            // 配置控制台线路0，用于本地访问</span><br><span class="line">line vty 0 4        // 配置虚拟终端线路0到4，用于远程访问</span><br><span class="line">login                // 启用登录认证，要求输入用户名和密码</span><br><span class="line">line vty 5 15         // 配置虚拟终端线路5到15，扩展远程访问范围</span><br><span class="line">login</span><br><span class="line">end                        // 结束配置模式，提交所有更改</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="5-3-测试工作（以VIP包厢区为例）"><a href="#5-3-测试工作（以VIP包厢区为例）" class="headerlink" title="5.3 测试工作（以VIP包厢区为例）"></a>5.3 测试工作（以VIP包厢区为例）</h4><ul>
+<li><p>VIP包厢区主机之间的联通测试</p>
+<p><img src="https://pic.imgdb.cn/item/66826421d9c307b7e997232e.png"></p>
+</li>
+<li><p>VIP包厢区与普通VIP区主机之间的联通测试</p>
+<p><img src="https://pic.imgdb.cn/item/66826421d9c307b7e99723d7.png"></p>
+</li>
+<li><p>VIP包厢区与电视区主机之间的联通测试</p>
+<p><img src="https://pic.imgdb.cn/item/66826422d9c307b7e997246a.png"></p>
+</li>
+<li><p>VIP包厢区与游戏区主机之间的联通测试</p>
+<p><img src="https://pic.imgdb.cn/item/66826422d9c307b7e99724e3.png"></p>
+</li>
+<li><p>VIP包厢区与外网之间的联通测试</p>
+<p><img src="https://pic.imgdb.cn/item/66826466d9c307b7e99790c1.png"></p>
+</li>
+<li><p>VIP包厢区访问服务器</p>
+<p><img src="https://pic.imgdb.cn/item/66826466d9c307b7e99790dd.png"></p>
+</li>
+</ul>
+<h1 id="总结体会"><a href="#总结体会" class="headerlink" title="总结体会"></a>总结体会</h1><p>在设计中小型网吧网络方案的过程中，我深刻体会到了资源的有限性和选择的重要性。面对无限的需求，我们必须在有限的资源下做出最优的决策，这正是约束优化的精髓——在条件限制下追求价值的最大化。</p>
+<p>正如艾森豪威尔所言，每一分投入到军事的资金，都是从那些需要食物和温暖的人身上“偷窃”而来。同样，在网吧网络建设中，我们的每一分钱、每一分精力的投入，都伴随着机会成本。选择投资高端设备，就意味着牺牲了其他可能的用途，如提升客户服务或优化室内环境。</p>
+<p>这个项目让我认识到，机会成本无处不在，它要求我们时刻意识到，每一次选择都伴随着放弃。决策者的角色至关重要，他们的价值观和偏好将直接影响决策的方向。在网吧项目中，我们必须在性能和成本之间找到平衡点，这需要我们不断评估不同方案的潜在价值和成本。</p>
+<p>我也意识到，决策的过程是复杂的，它不仅涉及技术和经济考量，还涉及道德和哲学问题。经济学不仅仅是关于金钱的计算，更是关于自由、选择和行动的学问。正如保罗·海恩所指出的，机会成本的概念关乎行动和选择，而非关于事物本身。</p>
+<p>在这个项目中，我学会了如何权衡不同方案的利弊，如何在技术性能和成本效益之间做出明智的决策。我知道，每一次选择都可能改变网吧的未来，影响用户的体验。我也认识到，作为决策者，我们有责任考虑每一个选择背后的机会成本，确保我们的决策能够为网吧带来最大的价值。</p>
+<p>总之，这次网吧网络设计任务是一次宝贵的学习经历。它不仅提升了我的技术能力和决策能力，也让我对经济学的机会成本原理有了更深刻的理解。我将把这些经验应用到未来的工作和生活中，做出更明智、更有远见的决策。</p>
+</article><div class="post-copyright"><div class="post-copyright__author_group"><a class="post-copyright__author_img" href="/about/"><img class="post-copyright__author_img_front" src="/img/pwa/favicon.ico"></a><div class="post-copyright__author_name">SunYu</div><div class="post-copyright__author_desc"></div></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div id="quit-box" onclick="RemoveRewardMask()"></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本文是原创文章，采用<a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a>协议，完整转载请注明来自<a href="/">SunYu</a></span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__tag-list"></div></div><div class="social-share"></div></div><nav class="needEndHide pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/06/09/%E6%88%91%E7%9A%84%E8%87%AA%E5%8F%99/"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">我的自叙</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><div class="author-info__top-group"><div class="author-info__sayhi" id="author-info__sayhi" onclick="sco.changeSayHelloText()">sayhello.morning</div></div></div><div class="avatar-img-group"><img class="avatar-img" alt="头像" src="/img/avatar.png"><div class="avatar-sticker"><img class="avatar-sticker-img" src="https://7.isyangs.cn/34/65f2e4e0423cc-34.png" alt="心情贴纸"></div></div><div class="author-info__description_group"><div class="author-info__description">分享自己对编程的<b>热爱</b>，对美好生活的<b>向往</b>，对知识海洋<b>探索历程</b>。</div><div class="author-info__description2">相信你可以在这里找到对你有用的知识和教程。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/about/"><div class="author-info__name">FeemFater</div><div class="author-info__desc"></div></a><div class="card-info-social-icons is-center"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="solitude st-menu-line"></i><span>文章目录</span></div><div class="toc-content" id="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E4%B8%80"><span class="toc-text">任务一</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E5%AE%9E%E9%AA%8C"><span class="toc-text">综合实验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9E%E9%AA%8C%E6%A6%82%E8%BF%B0"><span class="toc-text">1.实验概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%9E%E9%AA%8C%E5%8E%9F%E7%90%86"><span class="toc-text">2.实验原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9"><span class="toc-text">3.实验内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91"><span class="toc-text">3.1 网络拓扑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E9%85%8D%E7%BD%AE%E8%AE%BE%E5%A4%87"><span class="toc-text">3.2  配置设备</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="toc-text">4.实验结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%BB%E5%8A%A1%E4%BA%8C"><span class="toc-text">任务二</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E5%B0%8F%E5%9E%8B%E7%BD%91%E5%90%A7%E7%BD%91%E7%BB%9C%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%A1%88"><span class="toc-text">中小型网吧网络设计方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="toc-text">1 .项目概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF"><span class="toc-text">1.1 项目背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-%E9%A1%B9%E7%9B%AE%E8%A6%81%E6%B1%82%E4%B8%8E%E7%9B%AE%E6%A0%87"><span class="toc-text">1.2. 项目要求与目标</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">2.需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1%E7%9B%AE%E6%A0%87"><span class="toc-text">2.1 项目设计目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-%E9%A1%B9%E7%9B%AE%E9%9C%80%E6%B1%82%E7%89%B9%E7%82%B9%E5%88%86%E6%9E%90"><span class="toc-text">2.2 项目需求特点分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-text">2.3 项目设计原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-%E9%9C%80%E6%B1%82%E8%A7%84%E5%AE%9A"><span class="toc-text">2.4 需求规定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-%E7%BD%91%E7%BB%9C%E5%8A%9F%E8%83%BD%E7%9B%AE%E6%A0%87"><span class="toc-text">2.5 网络功能目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E7%9B%AE%E6%A0%87"><span class="toc-text">2.6 网络性能目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86%E7%9B%AE%E6%A0%87"><span class="toc-text">2.7 网络管理目标</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%96%BD%E6%96%B9%E6%A1%88"><span class="toc-text">3.项目实施方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E9%80%89%E6%8B%A9"><span class="toc-text">3.1 硬件设备选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E6%B8%85%E5%8D%95"><span class="toc-text">3.2 硬件设备清单</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-%E7%A1%AC%E4%BB%B6%E8%AE%BE%E5%A4%87%E9%80%89%E6%8B%A9%E5%88%86%E6%9E%90"><span class="toc-text">3.3 硬件设备选择分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4-%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8"><span class="toc-text">3.4 传输介质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5-%E8%BD%AF%E4%BB%B6%E5%87%86%E5%A4%87"><span class="toc-text">3.5 软件准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-6-%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E8%A7%84%E5%88%92"><span class="toc-text">3.6 网络拓扑规划</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-6-1-%E7%BD%91%E7%BB%9C%E5%88%92%E5%88%86"><span class="toc-text">3.6.1 网络划分</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-6-2-%E7%BD%91%E7%BB%9C%E6%9E%84%E5%BB%BA%E6%96%B9%E6%A1%88"><span class="toc-text">3.6.2 网络构建方案</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-7-%E7%BD%91%E7%BB%9C%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">3.7 网络拓扑结构设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-8-%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E8%A7%84%E5%88%92"><span class="toc-text">3.8 网络数据规划</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-8-1-IP%E5%9C%B0%E5%9D%80%E8%A7%84%E5%88%92"><span class="toc-text">3.8.1 IP地址规划</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-8-2-VLAN%E8%A7%84%E5%88%92"><span class="toc-text">3.8.2 VLAN规划</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-text">4.可行性分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E7%94%A8%E6%88%B7%E6%8E%A5%E5%8F%A3"><span class="toc-text">4.1 用户接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-%E6%8A%95%E8%B5%84%E8%B4%B9%E7%94%A8"><span class="toc-text">4.2 投资费用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-%E6%88%90%E6%9C%AC%E5%9B%9E%E6%94%B6"><span class="toc-text">4.3 成本回收</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%96%BD"><span class="toc-text">5. 项目实施</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84%E6%90%AD%E5%BB%BA"><span class="toc-text">5.1 拓扑结构搭建</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-%E9%85%8D%E7%BD%AE%E8%AE%BE%E5%A4%87%E5%8F%82%E6%95%B0"><span class="toc-text">5.2 配置设备参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3-%E6%B5%8B%E8%AF%95%E5%B7%A5%E4%BD%9C%EF%BC%88%E4%BB%A5VIP%E5%8C%85%E5%8E%A2%E5%8C%BA%E4%B8%BA%E4%BE%8B%EF%BC%89"><span class="toc-text">5.3 测试工作（以VIP包厢区为例）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E4%BD%93%E4%BC%9A"><span class="toc-text">总结体会</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="solitude st-map-line"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/07/02/%E4%BB%BB%E5%8A%A1%E4%BA%8C/" title="中小型网吧网络设计方案"><img alt="中小型网吧网络设计方案" src="https://www.cthulhuclub.com/wp-content/uploads/2021/01/d252163da99c42d88d54f7b59bd0d362.jpeg"></a><div class="content"><a class="title" href="/2024/07/02/%E4%BB%BB%E5%8A%A1%E4%BA%8C/" title="中小型网吧网络设计方案">中小型网吧网络设计方案</a><a class="article-recent_post_categories" href="/2024/07/02/%E4%BB%BB%E5%8A%A1%E4%BA%8C/">编程</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/09/%E6%88%91%E7%9A%84%E8%87%AA%E5%8F%99/" title="我的自叙"><img alt="我的自叙" src="https://pic.imgdb.cn/item/6641ea1a0ea9cb1403fb7db6.png"></a><div class="content"><a class="title" href="/2024/06/09/%E6%88%91%E7%9A%84%E8%87%AA%E5%8F%99/" title="我的自叙">我的自叙</a><a class="article-recent_post_categories" href="/2024/06/09/%E6%88%91%E7%9A%84%E8%87%AA%E5%8F%99/">杂文</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/13/%E5%84%92%E5%AE%B6%E7%9C%9F%E4%BA%BA--%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%BA%B8%E5%BF%83%E8%A6%81%E3%80%8B%E6%9C%89%E6%84%9F/" title="儒家真人--读《中庸心要》有感"><img alt="儒家真人--读《中庸心要》有感" src="https://p6-tt.byteimg.com/origin/pgc-image/db91ae5300cd4364a8bc7f50757848ba?from=pc"></a><div class="content"><a class="title" href="/2024/05/13/%E5%84%92%E5%AE%B6%E7%9C%9F%E4%BA%BA--%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%BA%B8%E5%BF%83%E8%A6%81%E3%80%8B%E6%9C%89%E6%84%9F/" title="儒家真人--读《中庸心要》有感">儒家真人--读《中庸心要》有感</a><a class="article-recent_post_categories" href="/2024/05/13/%E5%84%92%E5%AE%B6%E7%9C%9F%E4%BA%BA--%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%BA%B8%E5%BF%83%E8%A6%81%E3%80%8B%E6%9C%89%E6%84%9F/">杂项</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/13/%E8%99%9A%E5%B9%BB%E6%96%87%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%AE%87%E5%AE%99%E5%B9%BB%E6%83%B3/" title="虚幻文学中的宇宙幻想"><img alt="虚幻文学中的宇宙幻想" src="https://p3-tt.byteimg.com/origin/pgc-image/c462c39f8f1c44588511a4f756c22786?from=pc"></a><div class="content"><a class="title" href="/2024/05/13/%E8%99%9A%E5%B9%BB%E6%96%87%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%AE%87%E5%AE%99%E5%B9%BB%E6%83%B3/" title="虚幻文学中的宇宙幻想">虚幻文学中的宇宙幻想</a><a class="article-recent_post_categories" href="/2024/05/13/%E8%99%9A%E5%B9%BB%E6%96%87%E5%AD%A6%E4%B8%AD%E7%9A%84%E5%AE%87%E5%AE%99%E5%B9%BB%E6%83%B3/">杂项</a></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/05/13/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/" title="非线性方程求解潦草版"><img alt="非线性方程求解潦草版" src="https://pic.imgdb.cn/item/6641ea1d0ea9cb1403fb812c.png"></a><div class="content"><a class="title" href="/2024/05/13/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/" title="非线性方程求解潦草版">非线性方程求解潦草版</a><a class="article-recent_post_categories" href="/2024/05/13/%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/">编程</a></div></div></div></div></div></div></main><footer id="footer"><div id="st-footer-bar"><div class="footer-logo"><span>Solitude</span></div><div class="footer-bar-description">来自 SunYu 的文章</div><a class="footer-bar-link" href="/about/">了解更多</a></div><div id="footer_deal"></div><div id="st-footer"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div class="copyright">© 2021 - 2024 By&nbsp;<a class="footer-bar-link" href="/">FeemFater</a></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/valor-x/hexo-theme-solitude" alt="主题">主题</a><a class="footer-bar-link cc" href="/null" aria-label="copyright"><i class="solitude st-copyright-line"></i><i class="solitude st-creative-commons-by-line"></i><i class="solitude st-creative-commons-nc-line"></i><i class="solitude st-creative-commons-nd-line"></i></a></div></div></div></footer></div><!-- right_menu--><!-- inject body--><div><script src="/js/utils.js?v=1.11.0"></script><script src="/js/main.js?v=1.11.0"></script><script src="/js/third_party/waterfall.min.js?v=1.11.0"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/third_party/universe.min.js?v=1.11.0"></script><script>dark()
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js"></script><div class="js-pjax"></div></div><!-- newest comment--><!-- pjax--><script>const pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: ['title','#body-wrap','#site-config','meta[name="description"]','.js-pjax','meta[property^="og:"]','#config-diff'],
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+})
+
+document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+})
+
+document.addEventListener('pjax:complete', () => {
+    window.refreshFn()
+
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+        const newScript = document.createElement('script')
+        const content = item.text || item.textContent || item.innerHTML || ""
+        Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+        newScript.appendChild(document.createTextNode(content))
+        item.parentNode.replaceChild(newScript, item)
+    })
+
+    GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+})
+
+document.addEventListener('pjax:error', (e) => {
+    if (e.request.status === 404) {
+        pjax.loadUrl('/404.html')
+    }
+})</script><!-- theme--><script>initTheme = () => {
+    let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const cachedMode = utils.saveToLocal.get('theme');
+    if (cachedMode === undefined) {
+        const nowMode =
+            isDarkMode ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', nowMode);
+    } else {
+        document.documentElement.setAttribute('data-theme', cachedMode);
+    }
+    is_rm && rm.mode(cachedMode === 'dark' && isDarkMode)
+}
+initTheme()</script><!-- google adsense--><!-- search--><!-- Tianli-Talk--><!-- music--></body></html><script>const posts=["2024/07/02/任务二/","2024/06/09/我的自叙/","2024/05/13/儒家真人--读《中庸心要》有感/","2024/05/13/虚幻文学中的宇宙幻想/","2024/05/13/非线性方程求解/","2024/05/13/数值分析/","2024/05/13/PHP/","2024/05/13/SQL/","2024/05/13/广义表的应用设计/"];function toRandomPost(){ pjax.loadUrl('/'+posts[Math.floor(Math.random()*posts.length)]); }</script>
